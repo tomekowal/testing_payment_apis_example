@@ -26,6 +26,8 @@ defmodule TestingPaymentApisExampleWeb.Router do
     pipe_through :api
 
     resources "/authorizations", AuthorizationController, except: [:new, :edit]
+    resources "/captures", CaptureController, except: [:new, :edit]
+    resources "/refunds", RefundController, except: [:new, :edit]
   end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development

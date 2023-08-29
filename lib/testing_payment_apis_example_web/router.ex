@@ -18,12 +18,15 @@ defmodule TestingPaymentApisExampleWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
+
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", TestingPaymentApisExampleWeb do
-  #   pipe_through :api
-  # end
+  scope "/api", TestingPaymentApisExampleWeb do
+    pipe_through :api
+
+    resources "/authorizations", AuthorizationController, except: [:new, :edit]
+  end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development
   if Application.compile_env(:testing_payment_apis_example, :dev_routes) do
